@@ -5,9 +5,9 @@ import Card from "../components/Card.astro";
 
 <Layout title="Cloudy.">
 	<main>
-		
-		<img src="https://www.svgrepo.com/show/112643/cloudy.svg" alt="favicon.svg" height=200 weight=200/>
-		
+    <div class = vector>
+		  <img src="https://www.svgrepo.com/show/112643/cloudy.svg" alt="favicon.svg" height=200 weight=200/>
+    </div>
 		<h1>welcome to <span class="text-gradient">Cloudy</span></h1>
 		<p class="instructions">A webapp for sharing files without Registration or Logins & fully anonymous!</p>
 		<p class="info">
@@ -26,7 +26,14 @@ import Card from "../components/Card.astro";
 		color: white;
 		font-size: 20px;
 		line-height: 1.6;
-	}
+  }
+
+  .vector {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
 	.astro-a {
 		position: absolute;
 		top: -32px;
