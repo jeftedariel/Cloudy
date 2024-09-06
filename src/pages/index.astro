@@ -14,12 +14,49 @@ import Card from "../components/Card.astro";
 			Just pick a file and click on Upload, then <code>Cloudy</code> will give you an URL for sharing.<br/>
     </p>
 
-    <form action="http://89.117.146.131/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Choose a file:</label>
-        <input type="file" id="file" name="file" required>
-        <br><br>
-        <button type="submit">Upload</button>
-    </form>
+    <form id="uploadForm" action="http://89.117.146.131/upload" method="post" enctype="multipart/form-data" class="upload-form">
+    <label for="file" class="file-upload">Choose a file:</label>
+    <input type="file" id="file" name="file" required>
+    <br><br>
+    <button type="submit" class="upload-btn">Upload</button>
+    <br>
+</form>
+
+<div id="message" style="display: none;"></div>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Skip any redirect
+
+    // then hide the form
+    const form = document.getElementById('uploadForm');
+    const message = document.getElementById('message');
+    form.style.display = 'none';
+
+    const formData = new FormData();
+    formData.append('file', document.getElementById('file').files[0]);
+
+    try {
+        // send the file
+        const response = await fetch('http://89.117.146.131/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (response.ok) {
+            const result = await response.text();
+            message.style.display = 'block';
+            message.innerHTML = `<p class="upload-form">Upload successful! Server response: ${result}</p>`;
+        } else {
+            throw new Error('Upload failed');
+        }
+    } catch (error) {
+          message.style.display = 'block';
+          message.innerHTML = `<p class="upload-form">Error: ${error.message}</p>`;
+      }
+    });
+  </script>
+
 
 	</main>
 	
@@ -34,6 +71,62 @@ import Card from "../components/Card.astro";
 		color: white;
 		font-size: 20px;
 		line-height: 1.6;
+  }
+
+  .upload-form {
+    text-align: center;
+    background-color: #1e1e2f;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    color: white;
+  }
+
+  .custom-file-upload {
+    background-color: #282c34;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid #6c63ff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .custom-file-upload:hover {
+    background-color: #6c63ff;
+  }
+
+  .custom-file-upload input[type="file"] {
+    display: none;
+  }
+
+  .upload-btn {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  .upload-btn:hover {
+    background-color: #575de3;
+  }
+
+  .upload-btn:active {
+    background-color: #4a4fc2;
+  }
+
+  .upload-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.5);
   }
 
   .vector {
