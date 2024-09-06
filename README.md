@@ -1,5 +1,5 @@
 # Cloudy ☁️
-A simple webapp for sharing files, developed with Astro.
+A simple webapp for sharing files, developed with Astro & Go.
 Feel free to use.
 ## Screenshot
 
