@@ -1,4 +1,4 @@
-# Cloudy
+# Cloudy ☁️
 A simple webapp for sharing files, developed with Astro & Golang
 
 ## Screenshot
