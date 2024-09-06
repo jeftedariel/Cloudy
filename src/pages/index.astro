@@ -51,7 +51,7 @@ import Card from "../components/Card.astro";
                     const result = await response.text();
                     if (message) {
                         message.style.display = 'block';
-                        message.innerHTML = `<p class="upload-form">Upload successful! Server response: ${result}</p>`;
+                      message.innerHTML = `<p>Upload successful!</p> <br> <p>${result}</p>`;
                     }
                 } catch (error) {
                     if (message) {
