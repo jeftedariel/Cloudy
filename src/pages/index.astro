@@ -15,7 +15,7 @@ import Card from "../components/Card.astro";
     </p>
 
     <form id="uploadForm" class="upload-form">
-      <label for="file" class="file-upload">Choose a file:</label>
+      <label for="file" class="file-upload"></label>
       <input type="file" id="file" name="file" required>
       <br><br>
       <button type="submit" class="upload-btn">Upload</button>
@@ -29,13 +29,13 @@ import Card from "../components/Card.astro";
     </div>
     
     <br>
-  <footer class="footer">
+    <footer class="footer">
     <ul class="social-icon">
       <li class="social-icon__item"><a class="social-icon__link" href="https://github.com/jeftedariel/Cloudy">
           <ion-icon name="logo-github"></ion-icon></a>
       </li>
     </ul>
-    <p>&copy;2024 Cloudy FileShare | MIT Licence</p>
+    <p>&copy;2024 Cloudy FileShare | MIT License</p>
   </footer>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -111,22 +111,22 @@ import Card from "../components/Card.astro";
   position: relative;
   width: 100%;
   min-height: 100px;
-  padding: 20px 150px;
-  display: flex;
+  padding: 20px 120px;
+  display: grid;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   bottom: 0;
-  left: -150px;
+  left: -140px;
   }
 
   .social-icon,
   .menu {
     position: relative;
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
-    margin: 10px 0;
+    margin: 10px 0px;
     flex-wrap: wrap;
   }
 
@@ -163,7 +163,7 @@ import Card from "../components/Card.astro";
 
   .footer p {
     color: #fff;
-    margin: 15px 0 10px 0;
+    margin: 5px 0 0px 25px;
     font-size: 1rem;
     font-weight: 300;
   }
@@ -200,7 +200,17 @@ import Card from "../components/Card.astro";
   .custom-file-upload input[type="file"] {
     display: none;
   }
+  
+  input::file-selector-button{
+    background-color: #8f89fd;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
 
+  }
   .upload-btn {
     background-color: #6c63ff;
     color: white;
